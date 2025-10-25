@@ -377,8 +377,10 @@ strategy_type = st.sidebar.selectbox(
 
 lookback_years = st.sidebar.number_input(
     "Lookback Period (Years)",
-    value=5,
-    help="Number of years of historical data to use"
+    min_value=0.1,
+    max_value=30.0,
+    value=5.0,
+    help="Number of years of historical data to use (can be decimal e.g. 5.3)"
 )
 
 st.sidebar.markdown("---")
@@ -495,7 +497,7 @@ if run_button:
                 st.markdown(f"**Trigger Values:** {min(trigger_range):.1%} to {max(trigger_range):.1%}")
                 
                 with st.spinner("Displaying heatmap of sensitivity of returns to deviations in hyperparameters"):
-                    fig, axes = plt.subplots(1, 2, figsize=(16, 7), sharey=True)
+                    fig, axes = plt.subplots(2, 1, figsize=(16, 14), sharex=True)
                     
                     # Run sensitivity analysis
                     buy_strat = pd.DataFrame(
