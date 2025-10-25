@@ -368,11 +368,11 @@ st.sidebar.header("Backtest Configuration")
 
 # Main inputs
 ticker = st.sidebar.text_input("Ticker Symbol", value="SPY", help="Enter ticker")
-
 strategy_type = st.sidebar.selectbox(
     "Strategy Type",
-    options=["Mean Reversion", "Momentum"],
-    help="Mean Reversion / Momentum strategies with signal generation on daily returns"
+    options=["mean_reversion", "momentum"],
+    format_func=lambda x: x.replace("_", " ").title(),  # Display as "Mean Reversion" and "Momentum"
+    help="Mean Reversion: Buy dips, sell rallies | Momentum: Buy rallies, sell dips"
 )
 
 lookback_years = st.sidebar.number_input(
