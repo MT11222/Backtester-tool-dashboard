@@ -609,3 +609,4 @@ if run_button:
 else:
     # Welcome message
     st.info("Select backtest parameters then click 'Run Backtest'")
+    
